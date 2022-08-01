@@ -3,6 +3,7 @@ package io.github.thebusybiscuit.slimefun4.core.attributes;
 import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Location;
@@ -197,6 +198,18 @@ public interface EnergyNetComponent extends ItemAttribute {
         } catch (Exception | LinkageError x) {
             Slimefun.logger().log(Level.SEVERE, x, () -> "Exception while trying to remove an energy-charge for \"" + getId() + "\" at " + new BlockPosition(l));
         }
+    }
+
+    /**
+     * This method can be overridden by any {@link EnergyNetComponent} to show additional
+     * messages to the player when they right-click on it with a
+     * {@link io.github.thebusybiscuit.slimefun4.implementation.items.electric.gadgets.Multimeter}
+     *
+     * @return An array of messages to show to the player with a MultiMeter
+     */
+    @Nullable
+    default String[] getAdditionalInformation() {
+        return null;
     }
 
 }
