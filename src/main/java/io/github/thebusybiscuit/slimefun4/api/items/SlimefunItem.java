@@ -1136,6 +1136,17 @@ public class SlimefunItem implements Placeable {
         }
     }
 
+    /**
+     * Returns if this item, when placed, should be able to be tilled by a hoe - thus
+     * changing the material.
+     * Override if you wish to change the default behaviour of cancelling the tilling event
+     *
+     * @return If this item, when placed, can be tilled (defaults to false)
+     */
+    public boolean canBeTilled() {
+        return false;
+    }
+
     @Override
     public final boolean equals(Object obj) {
         if (obj instanceof SlimefunItem item) {

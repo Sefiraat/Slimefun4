@@ -262,7 +262,12 @@ public enum SlimefunTag implements Tag<Material> {
     /**
      * All wool carpets
      */
-    WOOL_CARPETS;
+    WOOL_CARPETS,
+
+    /**
+     * All hoes
+     */
+    HOES;
 
     /**
      * Lookup table for tag names.

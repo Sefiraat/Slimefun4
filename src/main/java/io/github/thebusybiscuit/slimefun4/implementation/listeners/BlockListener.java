@@ -95,6 +95,21 @@ public class BlockListener implements Listener {
         }
     }
 
+    /**
+     * Fixes an issue when tilling a Slimefun block with a tillable material
+     * @param e
+     */
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onBlockTilled(BlockPlaceEvent e) {
+        ItemStack item = e.getItemInHand();
+        if (SlimefunTag.HOES.isTagged(item.getType())) {
+            SlimefunItem sfItem = BlockStorage.check(e.getBlock());
+            if (sfItem != null && !sfItem.canBeTilled()) {
+                e.setCancelled(true);
+            }
+        }
+    }
+
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent e) {
         // Simply ignore any events that were faked by other plugins
